@@ -7,3 +7,12 @@ request({ url: url, json: true }, (error, response) => {
     const rainChance = response.body.currently.precipProbability
     console.log(`${response.body.daily.data[0].summary} It is current ${temp} degrees out. There is a ${rainChance}% chance of rain.`);
 });
+
+const geocodeURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoiemFuZWNhbXBiZWxsIiwiYSI6ImNqc3VzZjZhZDFreTQzeXBhcmNxb2Z2bmsifQ.YSsGUrJLZIqfqasi1Dlz7Q&limit=1'
+
+request({ url: geocodeURL, json: true }, (error, response) => {
+    const latitude = response.body.features[0].center[0]
+    const longitude = response.body.features[0].center[1]
+    console.log(latitude, longitude);
+});
+// mapbox key = pk.eyJ1IjoiemFuZWNhbXBiZWxsIiwiYSI6ImNqc3VzZjZhZDFreTQzeXBhcmNxb2Z2bmsifQ.YSsGUrJLZIqfqasi1Dlz7Q
