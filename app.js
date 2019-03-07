@@ -1,12 +1,13 @@
 const request = require('request');
 const geocode = require('./utils/geocode.js');
+const forecast = require('./utils/forecast.js');
 
 const url = 'https://api.darksky.net/forecast/77bb2bfa7a3d8d204021a7de87ff8f1e/37.8267,-122.4233';
 
 // request({ url: url, json: true }, (error, response) => {
 //     if (error) {
 //         console.log('Unable to connect to waether service!')
-//     } else if (response.body) {
+//     } else if (response.body.error) {
 //         console.log('Unable to find location')
 //     } else {
 //         const temp = response.body.currently.temperature
@@ -29,10 +30,16 @@ const url = 'https://api.darksky.net/forecast/77bb2bfa7a3d8d204021a7de87ff8f1e/3
 //     }
 // });
 
-geocode('Seattle', (error, data) => {
-    console.log('Error', error);
+// geocode('Seattle', (error, data) => {
+//     console.log('Error', error);
+//     console.log('Data', data);
+// });
+
+forecast(-75.7088, 44.1545, (error, data) => {
+    console.log('Error', error)
     console.log('Data', data);
 });
+
 
 
 
